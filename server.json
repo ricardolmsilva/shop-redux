@@ -1,0 +1,62 @@
+{
+  "stock": [
+    {
+      "id": 1,
+      "amount": 3
+    },
+    {
+      "id": 2,
+      "amount": 3
+    },
+    {
+      "id": 3,
+      "amount": 6
+    },
+    {
+      "id": 4,
+      "amount": 1
+    },
+    {
+      "id": 5,
+      "amount": 9
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "FARAH",
+      "price": 24.99,
+      "image": "https://img.tkmaxx.com/medias/27003312-search-wl-01.jpg?context=bWFzdGVyfHByb2R1Y3QtaW1hZ2VzfDI0MzE4fGltYWdlL2pwZWd8cHJvZHVjdC1pbWFnZXMvaDdlL2g4OS8xMTE5MzM3MzgxODkxMC5qcGd8NGRjZTAzNDMyNjQ5MTM5YjU2MDk2N2MyODdiN2E1MjEzMTVmMzBkYmEzMGMxMDIxYWNhYmYwNDFiOGM1NzE3Zg"
+    },
+    {
+      "id": 2,
+      "title": "CATERPILLAR",
+      "price": 29.99,
+      "image": "https://img.tkmaxx.com/medias/27141316-search-wl-01.jpg?context=bWFzdGVyfHByb2R1Y3QtaW1hZ2VzfDI2NTU2fGltYWdlL2pwZWd8cHJvZHVjdC1pbWFnZXMvaDUyL2gxZS8xMTE5MTU1NDY3MDYyMi5qcGd8YzNlMjM1ZjNiNmZmYWYwZTMwNzYzM2RlNWYxZjY2M2VjMGI3N2ViODExN2Y2MDExYTYyNGJmZGU4ODk4ZjIyYg"
+    },
+    {
+      "id": 3,
+      "title": "BORN RICH",
+      "price": 16.99,
+      "image": "https://img.tkmaxx.com/medias/27163776-search-wl-01.jpg?context=bWFzdGVyfHByb2R1Y3QtaW1hZ2VzfDI0NzU1fGltYWdlL2pwZWd8cHJvZHVjdC1pbWFnZXMvaDNmL2hhYS8xMTE4Nzg0MzM5OTcxMC5qcGd8ZWQ3NzY2MmZiOTQ3ZDc5OTY0ODMyZWY0ZWZmYjY0NWI1ZmEzYjM2MDkyYWU5NGY1ZTlhZTk5MmExMDQwZTM1MA"
+    },
+    {
+      "id": 4,
+      "title": "DC SHOES",
+      "price": 29.99,
+      "image": "https://img.tkmaxx.com/medias/38271857-search-wl-01.jpg?context=bWFzdGVyfHByb2R1Y3QtaW1hZ2VzfDI4NjMyfGltYWdlL2pwZWd8cHJvZHVjdC1pbWFnZXMvaGUxL2hlZS8xMTE4ODQ0NjEwMTUzNC5qcGd8ZGMzMDM2MzU3NjFlMmU0MTJjMTlkM2IyMjY4ZDkxMGEyMzg2MTYzMDlkOWU1ZDI1Njc1MzhmZjgxNWZmOTdiYQ"
+    },
+    {
+      "id": 5,
+      "title": "CONVERSE",
+      "price": 29.99,
+      "image": "https://img.tkmaxx.com/medias/27343266-search-wl-01.jpg?context=bWFzdGVyfHByb2R1Y3QtaW1hZ2VzfDIzMjE5fGltYWdlL2pwZWd8cHJvZHVjdC1pbWFnZXMvaDhkL2g3NC8xMTE4NTkzODkyMzU1MC5qcGd8MDQ2YTBhZGE0MTYyMmVjNzY2MGJjODZmOTY4NTc1ZDk4ZjU1YWU5ZTI3NDAwOGUyMzY0ZDcwYmViYTBjMDAzOQ"
+    },
+    {
+      "id": 6,
+      "title": "Shoes nice",
+      "price": 34.99,
+      "image": "https://img.tkmaxx.com/medias/27022157-search-wl-01.jpg?context=bWFzdGVyfHByb2R1Y3QtaW1hZ2VzfDIzMDc4fGltYWdlL2pwZWd8cHJvZHVjdC1pbWFnZXMvaDk3L2gyNS8xMTE4Mzc3MTY0ODAzMC5qcGd8NzVkZTYzMGFiYzY2MGVjNGYxMjI2Y2FjNzc1Njk1MDE2MDM1YTQwMGU5YjEwNDc5NGI2YTJkNDVlMGZjYzI0NQ"
+    }
+  ]
+}

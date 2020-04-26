@@ -27,6 +27,22 @@ export const Container = styled.div`
       }
     }
   }
+
+  .emptyCart {
+    text-align: center;
+    padding: 50px 0;
+
+    div {
+      padding-bottom: 10px;
+    }
+
+    a {
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `
 
 export const ProductTable = styled.table`
