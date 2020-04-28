@@ -15,7 +15,7 @@ import { addToCartSuccess, updateProductAmountSuccess } from './actions'
 //
 // ─── MAIN FUNCTION ──────────────────────────────────────────────────────────────
 //
-function* addToCart({ id }) {
+function* addToCart({ id, quantity = 1 }) {
   const productExists = yield select((state) =>
     state.cart.find((product) => product.id === id)
   )
@@ -25,11 +25,11 @@ function* addToCart({ id }) {
   const stockAmount = stock.data.amount
   const currentAmount = productExists ? productExists.amount : 0
 
-  const amount = currentAmount + 1
+  const amount = quantity ? currentAmount + quantity : currentAmount + 1
 
   if (amount > stockAmount) {
     if (!toast.isActive('out_stock')) {
-      toast.error('Out of stock', {
+      toast.warn('Out of stock', {
         toastId: 'out_stock',
       })
     }
@@ -42,7 +42,7 @@ function* addToCart({ id }) {
     const response = yield call(api.get, `/products/${id}`)
     const data = {
       ...response.data,
-      amount: 1,
+      amount,
       priceFormatted: formatPrice(response.data.price),
     }
     yield put(addToCartSuccess(data))
@@ -60,7 +60,7 @@ function* updateAmount({ id, amount }) {
 
   if (amount > stockAmount) {
     if (!toast.isActive('out_stock')) {
-      toast.error('Out of stock', {
+      toast.warn('Out of stock', {
         toastId: 'out_stock',
       })
     }

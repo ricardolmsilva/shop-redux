@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 //
 // ─── STYLES AND ICONS ───────────────────────────────────────────────────────────
 //
-import { MdStoreMallDirectory, MdShoppingBasket } from 'react-icons/md'
+import { FiShoppingCart } from 'react-icons/fi'
 import { Container, Cart } from './styles'
 
 //
@@ -15,15 +15,17 @@ import { Container, Cart } from './styles'
 function Header({ cartQtd }) {
   return (
     <Container>
-      <Link to="/">
-        <MdStoreMallDirectory color="#fff" size={80} />
-      </Link>
+      <nav>
+        <Link to="/" className="link_nav">
+          Home
+        </Link>
+        <Link to="/project" className="link_nav">
+          About Project
+        </Link>
+      </nav>
       <Cart to="/cart">
-        <div>
-          <strong>Cart</strong>
-          <span>{cartQtd} items</span>
-        </div>
-        <MdShoppingBasket color="#fff" size={36} />
+        <FiShoppingCart />
+        <span>{cartQtd}</span>
       </Cart>
     </Container>
   )
@@ -33,6 +35,10 @@ Header.propTypes = {
   cartQtd: PropTypes.number.isRequired,
 }
 
-export default connect((state) => ({
-  cartQtd: state.cart.length,
-}))(Header)
+const mapStateToProps = (state) => ({
+  cartQtd: state.cart.reduce((total, product) => {
+    return total + product.amount
+  }, 0),
+})
+
+export default connect(mapStateToProps)(Header)

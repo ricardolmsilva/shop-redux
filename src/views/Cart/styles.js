@@ -1,36 +1,15 @@
 import styled from 'styled-components'
-import { darken } from 'polished'
 
 export const Container = styled.div`
-  padding: 30px;
   background: #fff;
   border-radius: 4px;
-
-  footer {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    button {
-      background: #7159c1;
-      color: #fff;
-      border: 0;
-      border-radius: 4px;
-      padding: 12px 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: background 0.03s;
-
-      &:hover {
-        background: ${darken(0.03, '#7159c1')};
-      }
-    }
-  }
+  padding: 20px;
+  margin-bottom: 20px;
 
   .emptyCart {
     text-align: center;
     padding: 50px 0;
+    width: 100%;
 
     div {
       padding-bottom: 10px;
@@ -42,66 +21,5 @@ export const Container = styled.div`
       justify-content: center;
       align-items: center;
     }
-  }
-`
-
-export const ProductTable = styled.table`
-  width: 100%;
-
-  thead th {
-    color: #999;
-    text-align: left;
-    padding: 12px;
-    font-size: 12px;
-    text-transform: uppercase;
-  }
-
-  tbody td {
-    padding: 12px;
-    border-bottom: 1px solid #999;
-  }
-
-  img {
-    max-height: 100px;
-  }
-
-  span {
-    display: block;
-    margin-top: 5px;
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-
-    input {
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      color: #666;
-      padding: 6px;
-      width: 50px;
-    }
-  }
-
-  button {
-    background: transparent;
-    border: 0;
-    padding: 6px;
-  }
-`
-
-export const Total = styled.div`
-  display: flex;
-  align-items: baseline;
-
-  span {
-    color: #999;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  strong {
-    font-size: 28px;
-    margin-left: 5px;
   }
 `

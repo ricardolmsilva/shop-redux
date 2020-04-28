@@ -1,12 +1,16 @@
 import styled from 'styled-components'
-import { darken } from 'polished'
 
 export const ProductList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   list-style: none;
+  transition: grid-template-columns 1s;
+  padding-bottom: 50px;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -19,58 +23,82 @@ export const ProductList = styled.ul`
     flex-direction: column;
     background: #fff;
     border-radius: 4px;
-    padding: 20px;
 
-    img {
-      align-self: center;
-      max-width: 150px;
-    }
-
-    > strong {
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 20px;
-      color: #333;
-      margin-top: 5px;
-    }
-
-    > span {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 5px 0 20px;
-    }
-
-    button {
-      background: #7159c1;
-      color: #fff;
-      border: 0;
-      border-radius: 4px;
+    div.image_container {
+      height: 270px;
       overflow: hidden;
-      margin-top: auto;
-
       display: flex;
+      justify-content: center;
       align-items: center;
-      transition: background 0.3s;
+      position: relative;
 
-      &:hover {
-        background: ${darken(0.03, '#7159c1')};
+      &:hover button {
+        transform: translateY(-100px);
+      }
+      &:hover a.search_icon {
+        transform: translateY(-100px);
       }
 
-      div {
-        display: flex;
-        align-items: center;
-        padding: 12px;
-        background: rgba(0, 0, 0, 0.1);
+      img {
+        object-fit: cover;
+        align-self: center;
+        width: 100%;
+        min-height: 100%;
+      }
 
-        svg {
-          margin-right: 5px;
+      div.buttons {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        bottom: -55px;
+
+        * {
+          color: #fff;
+        }
+
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          background: #333;
+          border-radius: 25px;
+          border: 0;
+          margin: 0 10px;
+          transition: transform 0.7s;
+
+          svg {
+            font-size: 14px;
+            /* margin-right: 10px; */
+          }
         }
       }
 
-      span {
-        flex: 1;
-        text-align: center;
-        font-weight: bold;
+      a.search_icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: #333;
+        border-radius: 25px;
+        margin: 0 10px;
+        transition: transform 1s;
+      }
+    }
+
+    div.product_details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+      padding: 18px;
+
+      a {
+        text-decoration: none;
       }
     }
   }

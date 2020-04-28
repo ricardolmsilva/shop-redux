@@ -10,16 +10,17 @@ import store from './store'
 import history from './services/history'
 import Routes from './routes'
 import GlobalStyles from './assets/styles/global'
-import Header from './components/Header'
+import Layout from './components/_layout/index'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router history={history}>
-        <Header />
-        <Routes />
-        <GlobalStyles />
-        <ToastContainer autoClose={2000} position="bottom-center" />
+        <Layout>
+          <Routes />
+          <GlobalStyles />
+          <ToastContainer autoClose={2000} position="bottom-right" />
+        </Layout>
       </Router>
     </Provider>
   </React.StrictMode>,

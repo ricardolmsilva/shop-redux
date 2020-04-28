@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
@@ -6,7 +7,7 @@ import { PropTypes } from 'prop-types'
 //
 // ─── STYLES AND ICONS ───────────────────────────────────────────────────────────
 //
-import { MdAddShoppingCart } from 'react-icons/md'
+import { FiShoppingCart, FiSearch } from 'react-icons/fi'
 import { ProductList } from './styles'
 
 //
@@ -23,21 +24,20 @@ import * as cartActions from '../../store/modules/cart/actions'
 //
 // ─── MAIN FUNCTION ──────────────────────────────────────────────────────────────
 //
-function Home({ amount, addToCartRequest }) {
+function Home({ addToCartRequest }) {
   const [products, setProducts] = useState([])
 
-  async function fetchProducts() {
-    const response = await api.get('/products')
-
-    const data = response.data.map((product) => ({
-      ...product,
-      priceFormatted: formatPrice(product.price),
-    }))
-
-    setProducts(data)
-  }
-
   useEffect(() => {
+    async function fetchProducts() {
+      const response = await api.get('/products')
+
+      const data = response.data.map((product) => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }))
+
+      setProducts(data)
+    }
     fetchProducts()
   }, [])
 
@@ -45,18 +45,25 @@ function Home({ amount, addToCartRequest }) {
     <ProductList>
       {products.map((product) => (
         <li key={product.id}>
-          <img src={product.image} alt="Nike" />
-          <strong>{product.title}</strong>
-          <span> {product.priceFormatted}</span>
+          <div className="image_container">
+            <img src={product.image} alt={product.title} />
 
-          <button type="button" onClick={() => addToCartRequest(product.id)}>
-            <div>
-              <MdAddShoppingCart size={16} color="#fff" />
-              {amount[product.id] || 0}
+            <div className="buttons">
+              <button
+                type="button"
+                onClick={() => addToCartRequest(product.id)}
+              >
+                <FiShoppingCart />
+              </button>
+              <Link to={`/product/${product.id}`} className="search_icon">
+                <FiSearch />
+              </Link>
             </div>
-
-            <span>ADD TO CART</span>
-          </button>
+          </div>
+          <div className="product_details">
+            <div>{product.title}</div>
+            <div> {product.priceFormatted}</div>
+          </div>
         </li>
       ))}
     </ProductList>
@@ -64,18 +71,10 @@ function Home({ amount, addToCartRequest }) {
 }
 
 Home.propTypes = {
-  amount: PropTypes.objectOf(PropTypes.any).isRequired,
   addToCartRequest: PropTypes.func.isRequired,
 }
-
-const mapStateToProps = (state) => ({
-  amount: state.cart.reduce((amount, product) => {
-    amount[product.id] = product.amount
-    return amount
-  }, {}),
-})
 
 const bindDispatchToProps = (dispatch) =>
   bindActionCreators(cartActions, dispatch)
 
-export default connect(mapStateToProps, bindDispatchToProps)(Home)
+export default connect(null, bindDispatchToProps)(Home)
