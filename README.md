@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="./public/mockup.png" width="250px" /><br>
+</div>
+</br>
 
-## Available Scripts
+##
 
-In the project directory, you can run:
+</div>
+<div align="center">
+  <a href="#rocket-used-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#books-conclusion">Conclusion</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>
+</div>
 
-### `yarn start`
+##
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+</div>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<div align="center">
+  <img src="./public/mockup.png" height="350px" /><br>
+</div>
 
-### `yarn test`
+</br>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## :rocket: Used Technologies
 
-### `yarn build`
+- [React.js](https://reactjs.org)
+- [Redux.js](https://redux.js.org)
+- [Redux-Saga.js](https://redux-saga.js.org)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</div>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [json-server](https://www.npmjs.com/package/json-server)
+- [react-toastify](https://www.npmjs.com/package/react-toastify)
+- [immer](https://immerjs.github.io/immer/docs/introduction)
+- [react-responsive](https://www.npmjs.com/package/react-responsive)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</br>
 
-### `yarn eject`
+## :computer: Project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<b>Shop Redux</b> it's a pratice project that I decided to do as a way of improve my knowledge with react and redux but mostly to learn redux-saga, technology that I never worked before.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To try web application just click in the link bellow.</br>
+[Go to demo](http://shop-redux.ricardolmsilva.site)
+</br>
+</br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## :books: Conclusion
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+At the beginning of that project was confusing to understand why should I use redux sagas with all of the boilerplate involved, but now I understand that is good to use sagas as a way to separate some logic from reducers making the code cleaner or when is require some kinds of stuff between actions and reducers working as a middleware.
+In the process of development i also had the opportunity to meet and work with some new libraries with names json-server, react-toastify, immer and react-responsive. Also I learned about store subscription in redux that I used to save cart state in the local storage of the client.
 
-## Learn More
+</br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## :memo: License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is under the MIT license.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+</br>
