@@ -1,14 +1,14 @@
 module.exports = {
   apps: [
     {
-      name: 'api',
+      name: 'shop-redux-server',
       script: './server.js',
       env: {
         SERVER_PORT: 8006,
       },
     },
     {
-      name: 'client',
+      name: 'shop-redux-client',
       script: 'serve',
       env: {
         PM2_SERVE_PATH: 'build',
