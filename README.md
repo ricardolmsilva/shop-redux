@@ -1,6 +1,3 @@
-<div align="center">
-  <img src="./public/mockup.png" width="250px" /><br>
-</div>
 </br>
 
 ##
