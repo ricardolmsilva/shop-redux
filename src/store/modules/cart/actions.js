@@ -35,3 +35,9 @@ export function removeFromCart(id) {
     id,
   }
 }
+
+export function finishPuchase() {
+  return {
+    type: '@cart/FINISH_PUCHASE',
+  }
+}

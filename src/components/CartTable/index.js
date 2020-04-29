@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 //
 // ─── STYLES AND ICONS ───────────────────────────────────────────────────────────
@@ -49,7 +50,7 @@ function CartTable({ cart, removeFromCart }) {
                 <img src={product.image} alt={product.title} />
               </td>
               <td>
-                <span>{product.title}</span>
+                <Link to={`/product/${product.id}`}>{product.title}</Link>
               </td>
               <td>
                 <span>{product.price}</span>

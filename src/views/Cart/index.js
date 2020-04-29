@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useMediaQuery } from 'react-responsive'
 
 //
 // ─── STYLES AND ICONS ───────────────────────────────────────────────────────────
@@ -19,13 +20,11 @@ import CartList from '../../components/CartList'
 // ─── MAIN FUNCTION ──────────────────────────────────────────────────────────────
 //
 function Cart({ cart }) {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 693.99px)' })
   return (
     <Container>
       {cart > 0 ? (
-        <>
-          <CartTable />
-          <CartList />
-        </>
+        <>{isTabletOrMobile ? <CartList /> : <CartTable />}</>
       ) : (
         <div className="emptyCart">
           <div>Your cart is empty</div>

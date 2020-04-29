@@ -24,41 +24,60 @@ import * as cartActions from '../../store/modules/cart/actions'
 //
 // ─── MAIN FUNCTION ──────────────────────────────────────────────────────────────
 //
-function SingleProduct({ match, addToCartRequest }) {
+function SingleProduct({ match, addToCartRequest, productAmountInCart }) {
   const [product, setProduct] = useState({})
-  const [quantity, setQuantity] = useState(1)
+  const [stock, setStock] = useState()
+  const [quantityOfInput, setQuantityOfInput] = useState(1)
+  const [stockAvailable, setStockAvailable] = useState(0)
 
   useEffect(() => {
     const { id } = match.params
 
-    async function fetchProduct() {
-      const response = await api.get(`/products/${id}`)
-      response.data.price = formatPrice(response.data.price)
-      setProduct(response.data)
+    async function fetchProductAndStock() {
+      const [productDetails, stockDetails] = await Promise.all([
+        api.get(`/products/${id}`),
+        api.get(`/stock/${id}`),
+      ])
+
+      productDetails.data.price = formatPrice(productDetails.data.price)
+
+      setProduct(productDetails.data)
+      setStock(stockDetails.data.amount)
     }
-    fetchProduct()
+
+    fetchProductAndStock()
   }, [match.params])
 
+  useEffect(() => {
+    setStockAvailable(stock - productAmountInCart)
+  }, [stock, productAmountInCart])
+
   const increaseQuantity = async () => {
-    const stock = await api.get(`stock/${product.id}`)
-    const wishQuantity = quantity + 1
-    if (wishQuantity > stock.data.amount) {
-      if (!toast.isActive('out_stock')) {
-        toast.warn('Out of stock', {
-          toastId: 'out_stock',
+    const wishQuantity = quantityOfInput + 1
+
+    if (wishQuantity > stockAvailable) {
+      if (!toast.isActive('max_amount_available')) {
+        toast.error(`Max amount available is ${stockAvailable}`, {
+          toastId: 'max_amount_available',
         })
       }
       return
     }
-    setQuantity(quantity + 1)
+
+    setQuantityOfInput(quantityOfInput + 1)
   }
 
   const decreaseQuantity = () => {
-    if (quantity === 1) {
+    if (quantityOfInput === 1) {
       return
     }
 
-    setQuantity(quantity - 1)
+    setQuantityOfInput(quantityOfInput - 1)
+  }
+
+  const addToCart = (id, qnt) => {
+    setQuantityOfInput(1)
+    addToCartRequest(id, qnt)
   }
 
   return (
@@ -75,26 +94,32 @@ function SingleProduct({ match, addToCartRequest }) {
           consequatur debitis, ratione optio vitae amet expedita delectus quasi
           illo doloremque, quo cum dolor eius sint! Eos sapiente non illum?
         </p>
+        <div className="product_details_stock">
+          <span>Available:</span>
+          <span>{stockAvailable}</span>
+        </div>
 
-        <div className="buttons">
-          <div className="product_quantity">
-            <button type="button">
-              <FiMinus size={18} onClick={() => decreaseQuantity(product)} />
-            </button>
-            <input type="number" readOnly value={quantity} />
-            <button type="button">
-              <FiPlus size={18} onClick={() => increaseQuantity(product)} />
+        {stockAvailable > 0 && (
+          <div className="buttons">
+            <div className="product_quantity">
+              <button type="button">
+                <FiMinus size={18} onClick={() => decreaseQuantity(product)} />
+              </button>
+              <input type="number" readOnly value={quantityOfInput} />
+              <button type="button">
+                <FiPlus size={18} onClick={() => increaseQuantity(product)} />
+              </button>
+            </div>
+
+            <button
+              type="button"
+              className="add_to_card"
+              onClick={() => addToCart(product.id, quantityOfInput)}
+            >
+              Add to Cart
             </button>
           </div>
-
-          <button
-            type="button"
-            className="add_to_card"
-            onClick={() => addToCartRequest(product.id, quantity)}
-          >
-            Add to Cart
-          </button>
-        </div>
+        )}
       </div>
     </Container>
   )
@@ -103,9 +128,16 @@ function SingleProduct({ match, addToCartRequest }) {
 SingleProduct.propTypes = {
   addToCartRequest: PropTypes.func.isRequired,
   match: PropTypes.objectOf(PropTypes.any).isRequired,
+  productAmountInCart: PropTypes.number.isRequired,
 }
+
+const mapStateToProps = (state, { match }) => ({
+  productAmountInCart: state.cart.map((p) =>
+    p.id === Number(match.params.id) ? p.amount : 0
+  ),
+})
 
 const bindDispatchToProps = (dispatch) =>
   bindActionCreators(cartActions, dispatch)
 
-export default connect(null, bindDispatchToProps)(SingleProduct)
+export default connect(mapStateToProps, bindDispatchToProps)(SingleProduct)

@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga'
 
 import rootReducer from './modules/rootReducer'
 import rootSaga from './modules/rootSaga'
+import { loadState, saveState } from './modules/localStorage'
 
 const sagaMonitor =
   process.env.NODE_ENV === 'development' && console.tron.createSagaMonitor()
@@ -16,8 +17,13 @@ const enhancer =
     ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))
     : applyMiddleware(sagaMiddleware)
 
-const store = createStore(rootReducer, enhancer)
+const persistedState = loadState()
+const store = createStore(rootReducer, persistedState, enhancer)
 
 sagaMiddleware.run(rootSaga)
+
+store.subscribe(() => {
+  saveState({ cart: store.getState().cart })
+})
 
 export default store

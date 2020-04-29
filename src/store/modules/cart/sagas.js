@@ -29,7 +29,7 @@ function* addToCart({ id, quantity = 1 }) {
 
   if (amount > stockAmount) {
     if (!toast.isActive('out_stock')) {
-      toast.warn('Out of stock', {
+      toast.warn('No more items available', {
         toastId: 'out_stock',
       })
     }
@@ -60,7 +60,7 @@ function* updateAmount({ id, amount }) {
 
   if (amount > stockAmount) {
     if (!toast.isActive('out_stock')) {
-      toast.warn('Out of stock', {
+      toast.warn('No more items available', {
         toastId: 'out_stock',
       })
     }

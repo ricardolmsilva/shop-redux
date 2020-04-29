@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 
 //
@@ -13,12 +14,19 @@ import { formatPrice } from '../../utils/format'
 import { Footer } from './styles'
 
 //
+// ─── REDUX ACTIONS ──────────────────────────────────────────────────────────────
+//
+import * as cartActions from '../../store/modules/cart/actions'
+
+//
 // ─── MAIN FUNCTION ──────────────────────────────────────────────────────────────
 //
-function CartFooter({ total }) {
+function CartFooter({ total, finishPuchase }) {
   return (
     <Footer>
-      <button type="button"> Finish purchase </button>
+      <button type="button" onClick={() => finishPuchase()}>
+        Finish purchase
+      </button>
 
       <div className="total">
         <span>Total</span>
@@ -30,6 +38,7 @@ function CartFooter({ total }) {
 
 CartFooter.propTypes = {
   total: PropTypes.string.isRequired,
+  finishPuchase: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
@@ -40,4 +49,7 @@ const mapStateToProps = (state) => ({
   ),
 })
 
-export default connect(mapStateToProps)(CartFooter)
+const bindDispatchToProps = (dispatch) =>
+  bindActionCreators(cartActions, dispatch)
+
+export default connect(mapStateToProps, bindDispatchToProps)(CartFooter)

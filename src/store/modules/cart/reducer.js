@@ -1,4 +1,5 @@
 import produce from 'immer'
+import { toast } from 'react-toastify'
 
 export default function cart(state = [], action) {
   switch (action.type) {
@@ -6,6 +7,7 @@ export default function cart(state = [], action) {
       return produce(state, (draft) => {
         const { product } = action
         draft.push(product)
+        toast.success('Product added to Cart')
       })
 
     case '@cart/REMOVE':
@@ -13,6 +15,7 @@ export default function cart(state = [], action) {
         const productIndex = draft.findIndex((p) => p.id === action.id)
         if (productIndex >= 0) {
           draft.splice(productIndex, 1)
+          toast.success('Product removed from Cart')
         }
       })
 
@@ -22,6 +25,14 @@ export default function cart(state = [], action) {
         if (productIndex >= 0) {
           draft[productIndex].amount = action.amount
         }
+        toast.success('Quantity updated')
+      })
+    }
+
+    case '@cart/FINISH_PUCHASE': {
+      return produce(state, (draft) => {
+        draft.length = 0
+        toast.success('Thank you for your puchase')
       })
     }
 

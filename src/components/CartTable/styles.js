@@ -3,10 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media (max-width: 693.99px) {
-    display: none;
-  }
 `
 
 export const ProductTable = styled.table`
@@ -35,6 +31,10 @@ export const ProductTable = styled.table`
 
     td {
       padding: 12px;
+
+      a {
+        color: #000;
+      }
     }
   }
 

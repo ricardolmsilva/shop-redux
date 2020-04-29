@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 //
 // ─── STYLES AND ICONS ───────────────────────────────────────────────────────────
@@ -36,7 +37,10 @@ function CartList({ cart, removeFromCart }) {
             </div>
 
             <div className="details">
-              <h1 className="title">{product.title}</h1>
+              <Link to={`/product/${product.id}`}>
+                {' '}
+                <h1 className="title">{product.title}</h1>
+              </Link>
 
               <div className="price">{product.price}</div>
 

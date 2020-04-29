@@ -3,9 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  @media (min-width: 694px) {
-    display: none;
-  }
 `
 
 export const List = styled.ul`
@@ -46,6 +43,9 @@ export const List = styled.ul`
       justify-content: space-between;
       padding: 10px 0;
 
+      a {
+        color: #000;
+      }
       .title {
         font-size: 16px;
       }

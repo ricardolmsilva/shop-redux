@@ -27,13 +27,21 @@ export const Container = styled.div`
       margin: 16px 0;
     }
 
+    .product_details_price {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
     .product_details_description {
       line-height: 20px;
     }
 
-    .product_details_price {
-      font-size: 16px;
-      margin-bottom: 16px;
+    .product_details_stock {
+      margin-top: 26px;
+      opacity: 0.7;
+      span + span {
+        margin-left: 5px;
+      }
     }
 
     .buttons {
