@@ -39,7 +39,7 @@
 
 To try web application just click in the link bellow.</br>
 </br>
-[Go to demo](http://shop-redux.ricardolmsilva.site)
+[Go to demo](http://shop-redux.ricardosilva.dev)
 </br>
 </br>
 
